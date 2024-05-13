@@ -1,5 +1,4 @@
 # Test_GitHub_webhooks-
-#changeeeee
 # GitHub Commit Notifier for Slack
 This Python application utilizes GitHub webhooks to monitor changes on the main branch of a specified repository and sends notifications to a Slack channel with details about each commit.
 

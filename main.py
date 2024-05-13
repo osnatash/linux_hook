@@ -15,6 +15,9 @@ def send_slack_notification(message):
     except requests.RequestException as e:
         print(f"Failed to send Slack notification: {e}")
 
+@app.route('/')
+def index():
+    return 'Hello, World!'
 
 @app.route('/webhook', methods=['POST'])
 def webhook():

@@ -1,8 +1,7 @@
-import os
 import requests
 from flask import Flask, request
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 # Define your Slack webhook URL
 SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
@@ -15,10 +14,6 @@ def send_slack_notification(message):
         response.raise_for_status()  # Raise an exception for non-2xx responses
     except requests.RequestException as e:
         print(f"Failed to send Slack notification: {e}")
-        
-@app.route('/')
-def index():
-    return 'Hello, World!'
 
 
 @app.route('/webhook', methods=['POST'])
@@ -62,14 +57,5 @@ def webhook():
         return 'Error processing webhook event', 500
 
 
-# This block is executed only if the script is run directly, not when imported as a module
-if __name__ == '__main__':
-    # Use Gunicorn to run the Flask application
-    port = int(os.environ.get("PORT", 8000))
-    host = "0.0.0.0"
-    workers = 4  # You can adjust the number of workers based on your application's needs
-    timeout = 30  # Set a timeout value if needed
-
-    # Run the application using Gunicorn
-    command = f"gunicorn -b {host}:{port} -w {workers} -t {timeout} main:app"  # Assuming your module name is 'main'
-    os.system(command)
+if _name_ == '_main_':
+    app.run(debug=True)

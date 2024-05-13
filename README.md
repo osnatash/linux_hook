@@ -28,19 +28,20 @@ Once the app is created, you'll be taken to the app's settings page.
 Navigate to "Incoming Webhooks" and activate it.
 Choose the channel where you want to send notifications and click "Allow".
 Copy the Webhook URL provided.
-5. Configure Environment Variables
 
+5. Configure Environment Variables
 SLACK_WEBHOOK_URL=https://your-slack-webhook-url
 Replace https://your-slack-webhook-url with the actual Webhook URL you copied in step 7 of the Slack setup.
 
 Running the Application
 Run the Flask application using the following command:
-
+python main.py
+OR
+gunicorn -b 0.0.0.0:$PORT main:app
+(for linux version)
 
 Testing
-To test the application, make changes to your GitHub repository and push commits to the main branch. You should receive Slack notifications for each commit.
-
+////
 Deployment
-Deploy your Flask application to a hosting service such as Heroku or Render. Ensure it's publicly accessible and properly configured with environment variables.
-
-Feel free to customize the instructions based on your specific setup or requirements. Make sure to provide clear and comprehensive guidance for users to set up and run your application successfully.
+render.com = https://test-github-webhooks-5.onrender.com/
+ngrok = https://888e-2a06-c701-9666-3c00-8c51-bfd-9261-69c7.ngrok-free.app/webhook

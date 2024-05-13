@@ -1,6 +1,6 @@
+import os
 import requests
 from flask import Flask, request
-import os
 
 app = Flask(__name__)
 
@@ -58,6 +58,7 @@ def webhook():
         return 'Error processing webhook event', 500
 
 
+# This block is executed only if the script is run directly, not when imported as a module
 if __name__ == '__main__':
     # Use Gunicorn to run the Flask application
     port = int(os.environ.get("PORT", 8000))
@@ -66,5 +67,5 @@ if __name__ == '__main__':
     timeout = 30  # Set a timeout value if needed
 
     # Run the application using Gunicorn
-    command = f"gunicorn -b {host}:{port} -w {workers} -t {timeout} {__name__}:app"
+    command = f"gunicorn -b {host}:{port} -w {workers} -t {timeout} main:app"  # Assuming your module name is 'main'
     os.system(command)

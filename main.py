@@ -1,5 +1,6 @@
 import requests
 from flask import Flask, request
+import os
 
 app = Flask(__name__)
 
@@ -58,4 +59,12 @@ def webhook():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Use Gunicorn to run the Flask application
+    port = int(os.environ.get("PORT", 8000))
+    host = "0.0.0.0"
+    workers = 4  # You can adjust the number of workers based on your application's needs
+    timeout = 30  # Set a timeout value if needed
+
+    # Run the application using Gunicorn
+    command = f"gunicorn -b {host}:{port} -w {workers} -t {timeout} {__name__}:app"
+    os.system(command)

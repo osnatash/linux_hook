@@ -1,7 +1,7 @@
 import requests
 from flask import Flask, request
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Define your Slack webhook URL
 SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
@@ -57,5 +57,5 @@ def webhook():
         return 'Error processing webhook event', 500
 
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)

@@ -6,7 +6,6 @@ app = Flask(__name__)
 # Define your Slack webhook URL
 SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
 
-
 def send_slack_notification(message):
     try:
         payload = {"text": message}
@@ -58,7 +57,6 @@ def webhook():
     except Exception as e:
         print(f"Error processing webhook event: {e}")
         return 'Error processing webhook event', 500
-
 
 if __name__ == '__main__':
     app.run(debug=True)

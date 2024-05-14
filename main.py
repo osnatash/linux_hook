@@ -4,7 +4,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 # Define your Slack webhook URL
-SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
+SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
 
 
 def send_slack_notification(message):
